@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg">
+    <ImageView android:layout_height="wrap_content" android:id="@+id/Top_Icon" android:layout_width="wrap_content" android:src="@drawable/icon"></ImageView>
+    <ImageView android:layout_height="wrap_content" android:id="@+id/Pointer" android:layout_width="wrap_content" android:src="@drawable/red" android:layout_toRightOf="@+id/Top_Icon" android:layout_alignTop="@+id/Top_Icon" android:layout_alignBottom="@+id/Top_Icon"></ImageView>
+    <DigitalClock android:text="DigitalClock" android:layout_width="wrap_content" android:id="@+id/digitalClock1" android:layout_height="wrap_content" android:layout_below="@+id/Pointer" android:layout_alignLeft="@+id/Pointer" android:layout_alignRight="@+id/Pointer"></DigitalClock>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_marginLeft="20dip" android:width="200dip" android:layout_marginTop="120dip" android:id="@+id/Txt" android:text="@string/app_name"></TextView>
+    <Button android:layout_width="wrap_content" android:id="@+id/button1" android:layout_height="wrap_content" android:layout_below="@+id/Txt" android:layout_alignLeft="@+id/Txt" android:layout_alignRight="@+id/Txt" android:text="Chat" android:enabled="false"></Button>
+    <TextView android:layout_width="wrap_content" android:id="@+id/textView1" android:layout_height="wrap_content" android:layout_below="@+id/button1" android:layout_alignLeft="@+id/button1" android:layout_alignRight="@+id/button1" android:text="Aktiver knappen skråt over denne tekst, for at modtage en notifikation når chatten bliver ledig. Dette er godt, hvis du benytter dig af andre apps imens."></TextView>
+    <ToggleButton android:layout_width="wrap_content" android:id="@+id/toggleButton1" android:text="ToggleButton" android:layout_height="wrap_content" android:layout_toRightOf="@+id/button1" android:layout_alignTop="@+id/button1" android:layout_alignBottom="@+id/button1" android:textOff="Slået fra" android:textOn="Slået til"></ToggleButton>    
+    </RelativeLayout>
