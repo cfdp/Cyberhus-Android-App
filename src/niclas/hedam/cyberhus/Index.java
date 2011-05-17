@@ -50,12 +50,13 @@ public class Index extends Activity {
         	ImageView img = (ImageView)findViewById(R.id.Pointer);
         	TextView txt = (TextView)findViewById(R.id.Txt);
         	Button but = (Button)findViewById(R.id.button1);
+    		ToggleButton tog = (ToggleButton)findViewById(R.id.toggleButton1);
         	if(html.contains("green.png") == true){
         		img.setImageResource(R.drawable.green);
         		txt.setText("Tryk på knappen under dig for at oprette forbindelse til Cyberhus chatrådgivning.");
         		Log.d("Cyberhus","Grøn");
         		but.setEnabled(true);
-        		ToggleButton tog = (ToggleButton)findViewById(R.id.toggleButton1);
+        		tog.setEnabled(false);
         		if(tog.isChecked()){
         			NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -83,17 +84,21 @@ public class Index extends Activity {
         		txt.setText("Der er optaget på chatrådgivningen. Skiltet opdateres hvert 20. sekund.");
         		Log.d("Cyberhus","Gul");
         		but.setEnabled(false);
+        		tog.setEnabled(true);
         	}
         	else if(html.contains("red.png") == true){
-        		img.setImageResource(R.drawable.red);
+        		img.setImageResources(R.drawable.red);
         		txt.setText("Chatten er lukket. Den er åben mandag-torsdag klokken 14-19 og fredag 13-19.");
         		Log.d("Cyberhus","Rød");
         		but.setEnabled(false);
+        		tog.setEnabled(true);
         	}else{
         		but.setEnabled(false);
-        		Log.d("Cyberhus","Fejl...");
-        		Log.d("Cyberhus",html);
-        		Toast.makeText(Index.this, "Der skete en fejl under opdateringen af skiltet", 5000);
+        		img.setImageResource(R.drawable.red);
+        		Log.d("Cyberhus","Fejl");
+        		tog.setEnabled(true);
+        		txt.setText("Der opstod en fejl under indlæsningen af chatten. Tjek din internetforbindelse.");
+        		
         	}
         }
     };

@@ -21,6 +21,8 @@ public class Chat extends Activity {
 	    ImageButton closeButton = (ImageButton)this.findViewById(R.id.imageButton1);
 	    closeButton.setOnClickListener(new OnClickListener() {
 	      public void onClick(View v) {
+	    	Activity indexActivity = new Index();
+	    	indexActivity.finish();
 	        finish();
 	        System.exit(0);
 	      }
