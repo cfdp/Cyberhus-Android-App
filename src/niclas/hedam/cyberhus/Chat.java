@@ -17,11 +17,12 @@ public class Chat extends Activity {
 	    mWebView = (WebView) findViewById(R.id.webview);
 	    mWebView.getSettings().setJavaScriptEnabled(true);
 	    mWebView.setWebViewClient(new WebViewClient());
-	    mWebView.loadUrl("http://chat.cyberhus.dk/client.php");
+	    mWebView.loadUrl("http://chat.cybhus.dk/client.php");
 	    ImageButton closeButton = (ImageButton)this.findViewById(R.id.imageButton1);
 	    closeButton.setOnClickListener(new OnClickListener() {
 	      public void onClick(View v) {
 	        finish();
+	        System.exit(0);
 	      }
 	    });
 	}
