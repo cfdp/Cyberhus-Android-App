@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 
 public class Chat extends Activity {
     WebView mWebView;
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.browser);
@@ -20,7 +21,8 @@ public class Chat extends Activity {
 	    mWebView.loadUrl("http://chat.cybhus.dk/client.php");
 	    ImageButton closeButton = (ImageButton)this.findViewById(R.id.imageButton1);
 	    closeButton.setOnClickListener(new OnClickListener() {
-	      public void onClick(View v) {
+	      @Override
+		public void onClick(View v) {
 	    	Activity indexActivity = new Index();
 	    	indexActivity.finish();
 	        finish();

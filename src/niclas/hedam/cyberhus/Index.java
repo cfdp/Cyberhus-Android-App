@@ -22,13 +22,17 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class Index extends Activity {
     /** Called when the activity is first created. */
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    
+    //SET DEBUG TO TRUE, IF THE CHECKER SHOULD DOWNLOAD FROM DEBUG-SCRIPT (Frax.dk)
+    boolean Debug = true;
+    
+    @Override
+	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
         runnable.run();
@@ -46,7 +50,8 @@ public class Index extends Activity {
     private String html = null;
     /** Updates the label / TextView with the information from the other thread */
     private Runnable showUpdate = new Runnable(){
-        public void run(){
+        @Override
+		public void run(){
         	ImageView img = (ImageView)findViewById(R.id.Pointer);
         	TextView txt = (TextView)findViewById(R.id.Txt);
         	Button but = (Button)findViewById(R.id.button1);
@@ -59,21 +64,16 @@ public class Index extends Activity {
         		tog.setEnabled(false);
         		if(tog.isChecked()){
         			NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-
         			int icon = R.drawable.icon;
         			CharSequence text = "Chatrådgivningen er åben";
         			CharSequence contentTitle = "Chatrådgivningen er åben";
         			CharSequence contentText = "Klik her for at oprette forbindelse til chatrådgivningen.";
         			long when = System.currentTimeMillis();
-
         			Intent intent = new Intent(Index.this, Chat.class);
         			PendingIntent contentIntent = PendingIntent.getActivity(Index.this, 0, intent, 0);
-
         			Notification notification = new Notification(icon,text,when);
         			notification.defaults |= Notification.DEFAULT_VIBRATE;
-
         			notification.setLatestEventInfo(Index.this, contentTitle, contentText, contentIntent);
-
         			notificationManager.notify(0, notification);
         			tog.setChecked(false);
         			finish();
@@ -87,7 +87,7 @@ public class Index extends Activity {
         		tog.setEnabled(true);
         	}
         	else if(html.contains("red.png") == true){
-        		img.setImageResources(R.drawable.red);
+        		img.setImageResource(R.drawable.red);
         		txt.setText("Chatten er lukket. Den er åben mandag-torsdag klokken 14-19 og fredag 13-19.");
         		Log.d("Cyberhus","Rød");
         		but.setEnabled(false);
@@ -105,12 +105,20 @@ public class Index extends Activity {
     private Handler handler = new Handler();
     private Runnable runnable = new Runnable() {
 
-    	public void run() {
+    	@Override
+		public void run() {
     		Thread checkUpdate = new Thread() {
-    	        public void run() {
+    	        @Override
+				public void run() {
     	            try {
-    	                //URL updateURL = new URL("http://chat.cyberhus.dk/lyskryds.php?action=checklys");
-    	            	URL updateURL = new URL("http://frax.dk/method.php");
+    	            	URL updateURL = new URL("");
+    	            	if(Debug == true){
+    	            		updateURL = new URL("http://frax.dk/method.php");
+    	            	}
+    	            	else
+    	            	{
+    	            		updateURL = new URL("http://chat.cyberhus.dk/lyskryds.php?action=checklys");
+    	            	}
     	                URLConnection conn = updateURL.openConnection();
     	                InputStream is = conn.getInputStream();
     	                BufferedInputStream bis = new BufferedInputStream(is);
@@ -120,7 +128,6 @@ public class Index extends Activity {
     	                while((current = bis.read()) != -1){
     	                    baf.append((byte)current);
     	                }
-    	 
     	                /* Convert the Bytes read to a String. */
     	                html = new String(baf.toByteArray());
     	                mHandler.post(showUpdate);
