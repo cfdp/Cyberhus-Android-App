@@ -20,13 +20,13 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
 public class Index extends Activity {
     /** Called when the activity is first created. */
-    @Override
     
     //SET DEBUG TO TRUE, IF THE CHECKER SHOULD DOWNLOAD FROM DEBUG-SCRIPT (Frax.dk)
     boolean Debug = true;
@@ -43,6 +43,14 @@ public class Index extends Activity {
         	  Intent intent = new Intent(Index.this, Chat.class);
               startActivity(intent);
         	  finish();
+          }
+        });
+        ImageButton info = (ImageButton)this.findViewById(R.id.imageButton1);
+        info.setOnClickListener(new OnClickListener() {
+          @Override
+          public void onClick(View v) {
+        	  Intent intent = new Intent(Index.this, Credits.class);
+              startActivityForResult(intent, 0);
           }
         });
     }
