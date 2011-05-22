@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent" android:background="@drawable/bg_normal">
+    <TextView android:layout_width="wrap_content" android:id="@+id/textView1" android:layout_alignParentLeft="true" android:layout_height="wrap_content" android:textColor="#FFFFFF" android:text="Denne app er udviklet af" android:textSize="20dip"></TextView>
+    <TextView android:layout_width="wrap_content" android:id="@+id/textView2" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:textColor="#FFFFFF" android:layout_marginLeft="5px" android:text="Niclas Hedam" android:textSize="40dip" android:layout_marginTop="60px"></TextView>
+    <TextView android:layout_width="wrap_content" android:id="@+id/textView3" android:text="Hjemmeside: Frax.dk" android:textColor="#FFFFFF" android:layout_height="wrap_content" android:layout_below="@+id/textView2" android:layout_alignLeft="@+id/textView2" android:layout_alignRight="@+id/textView2"></TextView>
+    <TextView android:layout_width="wrap_content" android:layout_below="@+id/textView3" android:id="@+id/textView6" android:layout_height="wrap_content" android:layout_alignLeft="@+id/textView3" android:layout_alignRight="@+id/textView3" android:layout_marginTop="40px" android:textColor="#FFFFFF" android:textSize="20dip" android:text="Og (Slet dig selv, hvis du ikke vil nævnes)"></TextView>
+    <TextView android:layout_width="wrap_content" android:layout_alignParentTop="true" android:id="@+id/textView4" android:layout_height="wrap_content" android:textSize="40dip" android:textColor="#FFFFFF" android:text="Rene Skou" android:layout_marginLeft="5px" android:layout_marginTop="200px"></TextView>
+    <TextView android:layout_width="wrap_content" android:id="@+id/textView5" android:text="Hjemmeside: ReneSkou.me" android:textColor="#FFFFFF" android:layout_height="wrap_content" android:layout_below="@+id/textView4" android:layout_alignLeft="@+id/textView4" android:layout_alignRight="@+id/textView4"></TextView>
+</RelativeLayout>
