@@ -14,6 +14,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -46,6 +47,7 @@ public class Index extends Activity {
           }
         });
         ImageButton info = (ImageButton)this.findViewById(R.id.imageButton1);
+        info.setBackgroundColor(Color.TRANSPARENT);
         info.setOnClickListener(new OnClickListener() {
           @Override
           public void onClick(View v) {
