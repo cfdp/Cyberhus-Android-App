@@ -123,7 +123,7 @@ public class Index extends Activity {
     	        @Override
 				public void run() {
     	            try {
-    	            	URL updateURL = new URL("");
+    	            	URL updateURL = null;
     	            	if(Debug == true){
     	            		updateURL = new URL("http://frax.dk/method.php");
     	            	}
