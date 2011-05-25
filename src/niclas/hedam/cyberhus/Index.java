@@ -32,6 +32,13 @@ public class Index extends Activity {
     //SET DEBUG TO TRUE, IF THE CHECKER SHOULD DOWNLOAD FROM DEBUG-SCRIPT (Frax.dk)
     boolean Debug = true;
     
+    //Objects that REQUIRES to be global in the class
+    public ImageView img = null;
+	public TextView txt = null;
+	public Button but = null;
+	public ToggleButton tog = null;
+	public boolean crashed = false;
+    
     @Override
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,10 +69,10 @@ public class Index extends Activity {
     private Runnable showUpdate = new Runnable(){
         @Override
 		public void run(){
-        	ImageView img = (ImageView)findViewById(R.id.Pointer);
-        	TextView txt = (TextView)findViewById(R.id.Txt);
-        	Button but = (Button)findViewById(R.id.button1);
-    		ToggleButton tog = (ToggleButton)findViewById(R.id.toggleButton1);
+        	img = (ImageView)findViewById(R.id.Pointer);
+        	txt = (TextView)findViewById(R.id.Txt);
+        	but = (Button)findViewById(R.id.button1);
+    		tog = (ToggleButton)findViewById(R.id.toggleButton1);
         	if(html.contains("green.png") == true){
         		img.setImageResource(R.drawable.green);
         		txt.setText("Tryk på knappen under dig for at oprette forbindelse til Cyberhus chatrådgivning.");
@@ -103,12 +110,7 @@ public class Index extends Activity {
         		but.setEnabled(false);
         		tog.setEnabled(true);
         	}else{
-        		but.setEnabled(false);
-        		img.setImageResource(R.drawable.red);
-        		Log.d("Cyberhus","Fejl");
-        		tog.setEnabled(true);
-        		txt.setText("Der opstod en fejl under indlæsningen af chatten. Tjek din internetforbindelse.");
-        		
+        		SetError();
         	}
         }
     };
@@ -143,11 +145,13 @@ public class Index extends Activity {
     	                mHandler.post(showUpdate);
     	                this.interrupt();
     	            } catch (Exception e) {
-    	            	Log.d("Cyberhus",e.getMessage());
+    	            	html = "error";
+    	            	mHandler.post(showUpdate);
     	            	this.interrupt();
     	            }
     	        }
     	    };
+    	    
     	    checkUpdate.start();
     		/*
     		 * Now register it for running next time
@@ -155,6 +159,21 @@ public class Index extends Activity {
 
     		handler.postDelayed(this, 20000);
     	}
+    
 
     };
+    private void SetError() {
+		img = (ImageView)findViewById(R.id.Pointer);
+    	txt = (TextView)findViewById(R.id.Txt);
+        but = (Button)findViewById(R.id.button1);
+		tog = (ToggleButton)findViewById(R.id.toggleButton1);
+    	
+    	but.setEnabled(false);
+		img.setImageResource(R.drawable.red);
+		Log.d("Cyberhus","Fejl");
+		tog.setEnabled(true);
+		txt.setText("Der opstod en fejl under indlæsningen af chatten. Tjek din internetforbindelse.");
+		
+		
+	}
 }
