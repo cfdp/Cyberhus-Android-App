@@ -3,6 +3,7 @@ package niclas.hedam.cyberhus;
 import android.app.Activity;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,11 +24,10 @@ public class Chat extends Activity {
 	    mWebView.setWebViewClient(new WebViewClient());
 	    mWebView.loadUrl("http://chat.cybhus.dk/client.php");
 	    ImageButton closeButton = (ImageButton)this.findViewById(R.id.imageButton1);
+	    closeButton.setBackgroundColor(Color.TRANSPARENT);
 	    closeButton.setOnClickListener(new OnClickListener() {
 	      @Override
 		public void onClick(View v) {
-	    	Activity indexActivity = new Index();
-	    	indexActivity.finish();
 	        finish();
 	        System.exit(0);
 	      }

@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -43,7 +44,8 @@ public class Index extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
-        runnable.run();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    	runnable.run();
         Button chatter = (Button)this.findViewById(R.id.button1);
         chatter.setOnClickListener(new OnClickListener() {
           @Override
