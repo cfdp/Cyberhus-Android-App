@@ -12,6 +12,6 @@
             </intent-filter>
         </activity>
         <activity android:label="@string/app_name" android:name=".Chat"/>
-        <activity android:name=".Credits" android:label="@string/app_name" android:screenOrientation="portrait"/>
+        <activity android:name="URL" android:label="@string/app_name" android:screenOrientation="portrait"/>
     </application>
 </manifest>

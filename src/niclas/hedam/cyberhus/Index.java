@@ -24,6 +24,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -44,6 +45,9 @@ public class Index extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+        ImageButton wb = (ImageButton)this.findViewById(R.id.wwwbutton);
+        ImageButton fb = (ImageButton)this.findViewById(R.id.fbutton);
+        ImageButton ib = (ImageButton)this.findViewById(R.id.ibutton);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     	runnable.run();
         Button chatter = (Button)this.findViewById(R.id.button1);
@@ -55,13 +59,18 @@ public class Index extends Activity {
         	  finish();
           }
         });
-        ImageButton info = (ImageButton)this.findViewById(R.id.imageButton1);
-        info.setBackgroundColor(Color.TRANSPARENT);
-        info.setOnClickListener(new OnClickListener() {
+        ImageView banner = (ImageView)findViewById(R.id.imageView1);
+        wb.setBackgroundColor(Color.TRANSPARENT);
+        fb.setBackgroundColor(Color.TRANSPARENT);
+        ib.setBackgroundColor(Color.TRANSPARENT);
+        wb.setOnClickListener(new OnClickListener() {
           @Override
           public void onClick(View v) {
-        	  Intent intent = new Intent(Index.this, Credits.class);
-              startActivityForResult(intent, 0);
+        	  Bundle bundle = new Bundle();
+        	  bundle.putString("url", "www");
+        	  Intent newIntent = new Intent(Index.this, URL.class);
+        	  newIntent.putExtras(bundle);
+        	  startActivityForResult(newIntent, 0);
           }
         });
     }
