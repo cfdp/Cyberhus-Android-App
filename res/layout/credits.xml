@@ -2,9 +2,9 @@
 <RelativeLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent" android:background="@drawable/bg_normal">
-    <TextView android:layout_width="wrap_content" android:id="@+id/textView1" android:layout_alignParentLeft="true" android:layout_height="wrap_content" android:textColor="#FFFFFF" android:text="Denne app er udviklet af" android:textSize="20dip"></TextView>
-    <TextView android:layout_width="wrap_content" android:id="@+id/textView2" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:textColor="#FFFFFF" android:layout_marginLeft="5px" android:text="Niclas Hedam" android:textSize="40dip" android:layout_marginTop="60px"></TextView>
-    <TextView android:layout_width="wrap_content" android:id="@+id/textView3" android:text="Hjemmeside: Frax.dk" android:textColor="#FFFFFF" android:layout_height="wrap_content" android:layout_below="@+id/textView2" android:layout_alignLeft="@+id/textView2" android:layout_alignRight="@+id/textView2"></TextView>
-    <Button android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:text="Tilbage" android:layout_width="fill_parent" android:id="@+id/back"></Button>
-</RelativeLayout>
+  android:layout_height="fill_parent" android:background="@drawable/bg">
+    <WebView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/webview"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+></WebView></RelativeLayout>

@@ -2,12 +2,12 @@ package niclas.hedam.cyberhus;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
 import android.view.WindowManager;
-import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class Credits extends Activity {
+    WebView mWebView;
 	/**
 	 * @see android.app.Activity#onCreate(Bundle)
 	 */
@@ -15,13 +15,10 @@ public class Credits extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.credits);
+	    mWebView = (WebView) findViewById(R.id.webview);
+	    mWebView.getSettings().setJavaScriptEnabled(true);
+	    mWebView.setWebViewClient(new WebViewClient());
+	    mWebView.loadUrl("http://cyberhus.dk/smartphone");
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		Button back = (Button)this.findViewById(R.id.back);
-        back.setOnClickListener(new OnClickListener() {
-          @Override
-          public void onClick(View v) {
-        	  finish();
-          }
-        });
 	}
 }
