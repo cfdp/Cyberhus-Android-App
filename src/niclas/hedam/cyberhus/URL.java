@@ -20,12 +20,13 @@ public class URL extends Activity {
 		mWebView = (WebView) findViewById(R.id.webview);
 		mWebView.getSettings().setJavaScriptEnabled(true);
 		mWebView.setWebViewClient(new WebViewClient());
+		mWebView.getSettings().setUserAgentString("cyberApp");
 		final String param1 = getIntent().getExtras().getString("url");
 		Log.d("Cyberhus", param1);
 		if (param1.contains("www")) {
 			mWebView.loadUrl("http://cyberhus.dk");
 		} else if (param1.contains("f")) {
-			mWebView.loadUrl("http://facebook.com/cyberhus");
+			mWebView.loadUrl("http://touch.facebook.com/cyberhus");
 		} else {
 			mWebView.loadUrl("http://cyberhus.dk/smartphone");
 		}

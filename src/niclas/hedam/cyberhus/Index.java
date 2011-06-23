@@ -29,9 +29,9 @@ import android.widget.ToggleButton;
 public class Index extends Activity {
 	/** Called when the activity is first created. */
 
-	// SET DEBUG TO TRUE, IF THE CHECKER SHOULD DOWNLOAD FROM DEBUG-SCRIPT
+	// SET DEBUG TO TRUE, IF CHECKER SHOULD DOWNLOAD FROM DEBUG-SCRIPT
 	// (Frax.dk)
-	boolean Debug = true;
+	boolean Debug = false;
 
 	// Objects that REQUIRES to be global in the class
 	public ImageView img = null;
