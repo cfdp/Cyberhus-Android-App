@@ -52,7 +52,7 @@ public class Index extends Activity {
 			txt = (TextView) findViewById(R.id.Txt);
 			but = (Button) findViewById(R.id.button1);
 			tog = (ToggleButton) findViewById(R.id.toggleButton1);
-			if (html.contains("green.png") == true) {
+			if (html.contains("green.png") == true || html.equals("3")) {
 				img.setImageResource(R.drawable.green);
 				txt.setText("Tryk på knappen under dig for at oprette forbindelse til Cyberhus chatrådgivning.");
 				Log.d("Cyberhus", "Grøn");
@@ -77,13 +77,13 @@ public class Index extends Activity {
 					tog.setChecked(false);
 					finish();
 				}
-			} else if (html.contains("yellow.png") == true) {
+			} else if (html.contains("yellow.png") == true || html.equals("2")) {
 				img.setImageResource(R.drawable.yellow);
 				txt.setText("Der er optaget på chatrådgivningen. Skiltet opdateres hvert 20. sekund.");
 				Log.d("Cyberhus", "Gul");
 				but.setEnabled(false);
 				tog.setEnabled(true);
-			} else if (html.contains("red.png") == true) {
+			} else if (html.contains("red.png") == true || html.equals("1")) {
 				img.setImageResource(R.drawable.red);
 				txt.setText("Chatten er lukket. Den er åben mandag-torsdag klokken 14-19 og fredag 13-19.");
 				Log.d("Cyberhus", "Rød");
@@ -105,7 +105,7 @@ public class Index extends Activity {
 					try {
 						URL updateURL = null;
 						if (Debug == true) {
-							updateURL = new URL("http://chat2.cyberhus.dk/check_status.php");
+							updateURL = new URL("http://chat2.cybhus.dk/chat_status.php");
 						} else {
 							updateURL = new URL(
 									"http://chat.cyberhus.dk/lyskryds.php?action=checklys");
@@ -157,6 +157,7 @@ public class Index extends Activity {
 			@Override
 			public void onClick(final View v) {
 				final Intent intent = new Intent(Index.this, Chat.class);
+				intent.putExtra("debug", true);
 				startActivity(intent);
 				finish();
 			}
@@ -221,7 +222,7 @@ private final int MENU_ITEM_1 = 1;
  */
 public boolean onCreateOptionsMenu(Menu menu) {  
     menu.add(0, MENU_ITEM_0, 0, "Skift til normal server");  
-    menu.add(0, MENU_ITEM_1, 0, "Skift til chat2.cyberhus.dk");  
+    menu.add(0, MENU_ITEM_1, 0, "Skift til chat2.cybhus.dk");  
     return true;  
 }  
  

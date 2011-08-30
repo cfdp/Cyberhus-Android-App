@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
@@ -23,7 +24,12 @@ public class Chat extends Activity {
 	    mWebView.getSettings().setJavaScriptEnabled(true);
 	    mWebView.setWebViewClient(new WebViewClient());
 	    mWebView.getSettings().setUserAgentString("cyberApp");
+	    if(getIntent().getExtras().getBoolean("debug") == true){
+	    	//Findes ikke - Google er tester
+	    	mWebView.loadUrl("http://google.com/search?q=Cyberhus");	
+	    }else{
 	    mWebView.loadUrl("http://chat.cyberhus.dk/client.php");
+	    }
 	    ImageButton closeButton = (ImageButton)this.findViewById(R.id.imageButton1);
 	    closeButton.setBackgroundColor(Color.TRANSPARENT);
 	    closeButton.setOnClickListener(new OnClickListener() {
