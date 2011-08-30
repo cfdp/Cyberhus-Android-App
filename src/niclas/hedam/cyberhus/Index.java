@@ -17,6 +17,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
@@ -30,7 +32,7 @@ public class Index extends Activity {
 	/** Called when the activity is first created. */
 
 	// SET DEBUG TO TRUE, IF CHECKER SHOULD DOWNLOAD FROM DEBUG-SCRIPT
-	// (Frax.dk)
+	// (chat2.cyberhus.dk)
 	boolean Debug = false;
 
 	// Objects that REQUIRES to be global in the class
@@ -103,7 +105,7 @@ public class Index extends Activity {
 					try {
 						URL updateURL = null;
 						if (Debug == true) {
-							updateURL = new URL("http://frax.dk/method.php");
+							updateURL = new URL("http://chat2.cyberhus.dk/check_status.php");
 						} else {
 							updateURL = new URL(
 									"http://chat.cyberhus.dk/lyskryds.php?action=checklys");
@@ -141,7 +143,7 @@ public class Index extends Activity {
 	};
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	public void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home);
 		final ImageButton wb = (ImageButton) findViewById(R.id.wwwbutton);
@@ -153,7 +155,7 @@ public class Index extends Activity {
 		final Button chatter = (Button) findViewById(R.id.button1);
 		chatter.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v) {
+			public void onClick(final View v) {
 				final Intent intent = new Intent(Index.this, Chat.class);
 				startActivity(intent);
 				finish();
@@ -164,7 +166,7 @@ public class Index extends Activity {
 		ib.setBackgroundColor(Color.TRANSPARENT);
 		wb.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v) {
+			public void onClick(final View v) {
 				final Intent newIntent = new Intent(Index.this,
 						niclas.hedam.cyberhus.URL.class);
 				newIntent.putExtra("url", "www");
@@ -173,7 +175,7 @@ public class Index extends Activity {
 		});
 		fb.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v) {
+			public void onClick(final View v) {
 				final Intent newIntent = new Intent(Index.this,
 						niclas.hedam.cyberhus.URL.class);
 				newIntent.putExtra("url", "f");
@@ -182,13 +184,14 @@ public class Index extends Activity {
 		});
 		ib.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v) {
+			public void onClick(final View v) {
 				final Intent newIntent = new Intent(Index.this,
 						niclas.hedam.cyberhus.URL.class);
 				newIntent.putExtra("url", "i");
 				startActivityForResult(newIntent, 8);
 			}
 		});
+		
 	}
 
 	private void SetError() {
@@ -204,4 +207,40 @@ public class Index extends Activity {
 		txt.setText("Der opstod en fejl under indlæsningen af chatten. Tjek din internetforbindelse.");
 
 	}
+	/*
+* Add this in your Activity
+*/
+private final int MENU_ITEM_0 = 0;  
+private final int MENU_ITEM_1 = 1;  
+ 
+
+/** 
+ * Add menu items
+ * 
+ * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+ */
+public boolean onCreateOptionsMenu(Menu menu) {  
+    menu.add(0, MENU_ITEM_0, 0, "Skift til normal server");  
+    menu.add(0, MENU_ITEM_1, 0, "Skift til chat2.cyberhus.dk");  
+    return true;  
+}  
+ 
+/** 
+ * Define menu action
+ * 
+ * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+ */
+public boolean onOptionsItemSelected(MenuItem item) {  
+    switch (item.getItemId()) {  
+        case MENU_ITEM_0:  
+        	Debug = false;
+        	break;
+        case MENU_ITEM_1: 
+        	Debug = true;
+        	break;
+	  default:
+		// put your code here	  
+    }  
+    return false;  
+}
 }
