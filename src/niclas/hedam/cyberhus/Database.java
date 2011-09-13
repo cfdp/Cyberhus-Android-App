@@ -17,11 +17,11 @@ public class Database extends Activity {
 	SharedPreferences p = PreferenceManager
 			.getDefaultSharedPreferences(getApplicationContext());
 
-	String GetValue(final String key) {
+	public String GetValue(final String key) {
 		return p.getString(key, null);
 	}
 
-	boolean IsRemembered() {
+	public boolean IsRemembered() {
 		if(p.getString("Name", null) != null || p.getString("Age", null) != null || p.getString("Sex", null) != null){
 			return true;
 		}else{
@@ -35,7 +35,7 @@ public class Database extends Activity {
 		// TODO Put your code here
 	}
 	
-	void SetValues(String Name, String Age, String Sex){
+	public void SetValues(String Name, String Age, String Sex){
 	Editor e = p.edit();
 	e.putString("Name", Name);
 	e.putString("Age", Age);

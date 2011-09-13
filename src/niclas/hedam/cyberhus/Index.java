@@ -8,10 +8,12 @@ import java.net.URLConnection;
 import org.apache.http.util.ByteArrayBuffer;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -41,7 +43,7 @@ public class Index extends Activity {
 	public Button but = null;
 	public ToggleButton tog = null;
 	public boolean crashed = false;
-
+	public Database db = new Database();
 	private final Handler mHandler = new Handler();
 	private String html = null;
 	/** Updates the label / TextView with the information from the other thread */
@@ -105,7 +107,8 @@ public class Index extends Activity {
 					try {
 						URL updateURL = null;
 						if (Debug == true) {
-							updateURL = new URL("http://chat2.cybhus.dk/chat_status.php");
+							updateURL = new URL(
+									"http://chat2.cybhus.dk/chat_status.php");
 						} else {
 							updateURL = new URL(
 									"http://chat.cyberhus.dk/lyskryds.php?action=checklys");
@@ -142,10 +145,15 @@ public class Index extends Activity {
 
 	};
 
-	@Override
-	public void onCreate(final Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.home);
+	/*
+	 * Add this in your Activity
+	 */
+	private final int MENU_ITEM_0 = 0;
+
+	private final int MENU_ITEM_1 = 1;
+
+	private void Boot() {
+
 		final ImageButton wb = (ImageButton) findViewById(R.id.wwwbutton);
 		final ImageButton fb = (ImageButton) findViewById(R.id.fbutton);
 		final ImageButton ib = (ImageButton) findViewById(R.id.ibutton);
@@ -192,7 +200,75 @@ public class Index extends Activity {
 				startActivityForResult(newIntent, 8);
 			}
 		});
-		
+	}
+
+	@Override
+	public void onCreate(final Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.home);
+		if (db.IsRemembered()) {
+			Boot();
+		} else {
+			final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setMessage(
+					"For at gøre det nemmere for chatrådgiveren, kan du indstille dit navn, din alder og dit køn. Vil du indstille det nu?")
+					.setCancelable(false)
+					.setPositiveButton("Ja",
+							new DialogInterface.OnClickListener() {
+								@Override
+								public void onClick(
+										final DialogInterface dialog,
+										final int id) {
+									// put your code here
+								}
+							})
+					.setNegativeButton("Nej",
+							new DialogInterface.OnClickListener() {
+								@Override
+								public void onClick(
+										final DialogInterface dialog,
+										final int id) {
+									// put your code here
+									dialog.cancel();
+									Boot();
+								}
+							});
+			final AlertDialog alertDialog = builder.create();
+			alertDialog.show();
+		}
+
+	}
+
+	/**
+	 * Add menu items
+	 * 
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
+	@Override
+	public boolean onCreateOptionsMenu(final Menu menu) {
+		menu.add(0, MENU_ITEM_0, 0, "Skift til normal server");
+		menu.add(0, MENU_ITEM_1, 0, "Skift til chat2.cybhus.dk");
+		return true;
+	}
+
+	/**
+	 * Define menu action
+	 * 
+	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+	 */
+	@Override
+	public boolean onOptionsItemSelected(final MenuItem item) {
+		switch (item.getItemId()) {
+		case MENU_ITEM_0:
+			Debug = false;
+			break;
+		case MENU_ITEM_1:
+			Debug = true;
+			break;
+		default:
+			// put your code here
+		}
+		return false;
 	}
 
 	private void SetError() {
@@ -208,40 +284,4 @@ public class Index extends Activity {
 		txt.setText("Der opstod en fejl under indlæsningen af chatten. Tjek din internetforbindelse.");
 
 	}
-	/*
-* Add this in your Activity
-*/
-private final int MENU_ITEM_0 = 0;  
-private final int MENU_ITEM_1 = 1;  
- 
-
-/** 
- * Add menu items
- * 
- * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
- */
-public boolean onCreateOptionsMenu(Menu menu) {  
-    menu.add(0, MENU_ITEM_0, 0, "Skift til normal server");  
-    menu.add(0, MENU_ITEM_1, 0, "Skift til chat2.cybhus.dk");  
-    return true;  
-}  
- 
-/** 
- * Define menu action
- * 
- * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
- */
-public boolean onOptionsItemSelected(MenuItem item) {  
-    switch (item.getItemId()) {  
-        case MENU_ITEM_0:  
-        	Debug = false;
-        	break;
-        case MENU_ITEM_1: 
-        	Debug = true;
-        	break;
-	  default:
-		// put your code here	  
-    }  
-    return false;  
-}
 }
