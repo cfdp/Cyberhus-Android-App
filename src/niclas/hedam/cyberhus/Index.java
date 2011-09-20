@@ -206,7 +206,7 @@ public class Index extends Activity {
 	public void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home);
-		if (db.IsRemembered()) {
+		if (db.IsRemembered(getSharedPreferences("Cyberhus", MODE_PRIVATE))) {
 			Boot();
 		} else {
 			final AlertDialog.Builder builder = new AlertDialog.Builder(this);

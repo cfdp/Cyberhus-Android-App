@@ -1,5 +1,9 @@
-This chat app for Android is built to integrate with the counselling  chat at Cyberhus.dk.
+This chat app for Android is built to integrate with the counselling chat at Cyberhus.dk.
 
-It is released under the AGPL license.
+Project specifications:
+Language: 			Java (Android version)
+Android version:		2.1 Update 1
+Package:			niclas.hedam.cyberhus
+License: 			AGPL
 
 Concept and development: Niclas Hedam.

@@ -14,14 +14,12 @@ import android.preference.PreferenceManager;
 
 public class Database extends Activity {
 
-	SharedPreferences p = PreferenceManager
-			.getDefaultSharedPreferences(getApplicationContext());
 
-	public String GetValue(final String key) {
+	public String GetValue(SharedPreferences p, final String key) {
 		return p.getString(key, null);
 	}
 
-	public boolean IsRemembered() {
+	public boolean IsRemembered(SharedPreferences p) {
 		if(p.getString("Name", null) != null || p.getString("Age", null) != null || p.getString("Sex", null) != null){
 			return true;
 		}else{
@@ -32,10 +30,9 @@ public class Database extends Activity {
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// TODO Put your code here
 	}
 	
-	public void SetValues(String Name, String Age, String Sex){
+	public void SetValues(SharedPreferences p, String Name, String Age, String Sex){
 	Editor e = p.edit();
 	e.putString("Name", Name);
 	e.putString("Age", Age);
