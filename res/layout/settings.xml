@@ -2,14 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
 	android:background="@drawable/bg">
-	<TableLayout android:layout_height="wrap_content"
-		android:layout_alignParentLeft="true" android:id="@+id/tableLayout1"
-		android:layout_margin="40px" android:layout_width="fill_parent">
+	<TableLayout android:layout_height="wrap_content" android:layout_centerInParent="true"
+		 android:id="@+id/tableLayout1"
+		android:layout_width="wrap_content">
 		<TableRow android:id="@+id/name" android:layout_width="wrap_content"
 			android:layout_height="wrap_content">
 			<TextView android:id="@+id/name_label" android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:text="Navn:"
-				android:textColor="#000000" />
+				android:layout_height="wrap_content" android:text="Navn:" android:textColor="#FFFFFF"/>
 			<EditText android:id="@+id/name_box" android:layout_height="wrap_content"
 				android:layout_marginLeft="20px" android:layout_width="300px" />
 		</TableRow>
@@ -17,32 +16,38 @@
 			android:layout_height="wrap_content">
 			<TextView android:id="@+id/age_label" android:layout_width="wrap_content"
 				android:layout_height="wrap_content" android:text="Alder:"
-				android:textColor="#000000" />
+				android:textColor="#FFFFFF" />
 			<EditText android:id="@+id/age_box" android:layout_height="wrap_content"
 				android:layout_marginLeft="20px" android:inputType="number"
 				android:layout_width="20px" android:maxLength="2" android:width="20px" />
 		</TableRow>
-			<TableRow android:id="@+id/sex" android:layout_width="wrap_content"
-				android:layout_height="wrap_content">
-				<TextView android:id="@+id/sex_label" android:layout_width="wrap_content"
-					android:layout_height="wrap_content" android:text="Køn:"
-					android:textColor="#000000" />
-					<RadioGroup android:layout_width="fill_parent"
-			android:layout_height="wrap_content" android:orientation="vertical"
-			android:id="@+id/sex_group">
+		<TableRow android:id="@+id/sex" android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+			<TextView android:id="@+id/sex_label" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:text="Køn:"
+				android:textColor="#FFFFFF" />
+			<RadioGroup android:layout_width="fill_parent"
+				android:layout_height="wrap_content" android:orientation="vertical"
+				android:id="@+id/sex_group">
 				<RadioButton android:id="@+id/sex_boy"
 					android:layout_height="wrap_content" android:text="Dreng"
 					android:layout_width="wrap_content" android:layout_marginLeft="20px" />
-					<RadioButton android:id="@+id/sex_girl"
+				<RadioButton android:id="@+id/sex_girl"
 					android:layout_height="wrap_content" android:text="Pige"
 					android:layout_width="wrap_content" android:layout_marginLeft="20px" />
-					</RadioGroup>
+			</RadioGroup>
+		</TableRow>
+		<TableRow android:id="@+id/save" android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+			<TextView />
+			<Button android:id="@+id/save_but" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:text="Gem" />
 			</TableRow>
-			<TableRow android:id="@+id/save" android:layout_width="wrap_content"
-				android:layout_height="wrap_content">
-				<TextView />
-				<Button android:id="@+id/save_but" android:layout_width="wrap_content"
-					android:layout_height="wrap_content" android:text="Gem" />
+		<TableRow android:id="@+id/tip" android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+			<TextView/>
+			<TextView android:text="Tip: Du kan lade være med at udfylde alle felterne, hvis du ikke ønsker f.eks. at rådgiveren får dit navn at vide" android:id="@+id/tip_txt" android:textColor="#FFFFFF" android:layout_height="wrap_content" android:layout_width="wrap_content" android:width="300px"></TextView>
+		
 			</TableRow>
 	</TableLayout>
 </RelativeLayout>

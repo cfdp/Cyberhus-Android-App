@@ -47,6 +47,8 @@ public final class R {
         public static final int sex_label=0x7f050014;
         public static final int tableLayout1=0x7f05000c;
         public static final int textView1=0x7f050006;
+        public static final int tip=0x7f05001a;
+        public static final int tip_txt=0x7f05001b;
         public static final int toggleButton1=0x7f050005;
         public static final int webview=0x7f050002;
         public static final int wwwbutton=0x7f05000b;
