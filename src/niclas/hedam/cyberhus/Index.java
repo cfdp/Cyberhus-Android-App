@@ -29,6 +29,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+import niclas.hedam.cyberhus.Database;
 
 public class Index extends Activity {
 	/** Called when the activity is first created. */
@@ -219,7 +220,8 @@ public class Index extends Activity {
 								public void onClick(
 										final DialogInterface dialog,
 										final int id) {
-									// put your code here
+									Intent Settings = new Intent(Index.this, Settings.class);
+									startActivityForResult(Settings, 52);
 								}
 							})
 					.setNegativeButton("Nej",

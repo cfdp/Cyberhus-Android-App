@@ -14,7 +14,7 @@ public class URL extends Activity {
 	 * @see android.app.Activity#onCreate(Bundle)
 	 */
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.credits);
 		mWebView = (WebView) findViewById(R.id.webview);
